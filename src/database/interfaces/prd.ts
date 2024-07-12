@@ -1,4 +1,4 @@
-export type Product = {
+export interface Product {
   _id: string;
   docId: string;
   fullData: any;
@@ -11,9 +11,12 @@ export type Product = {
   companyId: string;
   status: string;
   info: Info;
-};
+  categoryName: string;
+  primaryCategory: string;
+  secondaryCategory: string;
+}
 
-export type Data = {
+export interface Data {
   name: string;
   type: string;
   shortDescription: string;
@@ -29,9 +32,9 @@ export type Data = {
   isTaxable: boolean;
   images: Image[];
   categoryId: string;
-};
+}
 
-export type Variant = {
+export interface Variant {
   id: string;
   available: boolean;
   attributes: Attributes;
@@ -57,33 +60,33 @@ export type Variant = {
   active: boolean;
   images: Image[];
   itemCode: string;
-};
+}
 
-export type Attributes = any;
+export interface Attributes {}
 
-export type Image = {
+export interface Image {
   fileName: string;
   cdnLink: string;
   i: number;
   alt: any;
-};
+}
 
-export type Option = {
+export interface Option {
   name: string;
   values: Value[];
   id: string;
   dataField: any;
-};
+}
 
-export type Value = {
+export interface Value {
   id: string;
   name: string;
   value: string;
-};
+}
 
-export type DataPublic = any;
+export interface DataPublic {}
 
-export type Info = {
+export interface Info {
   createdBy: string;
   createdAt: string;
   updatedBy: any;
@@ -95,4 +98,4 @@ export type Info = {
   transactionId: string;
   skipEvent: boolean;
   userRequestId: string;
-};
+}

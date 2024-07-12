@@ -2,6 +2,8 @@
 /dist
 /node_modules
 /build
+images40.txt
+sample-products.json
 
 # Logs
 logs

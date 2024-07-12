@@ -3,7 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { resolve } from 'path';
 
 export default class MongoConnection {
-  static connect(
+  static getModule(
     uri: string,
     dbName: string,
     keyFilePath?: string,

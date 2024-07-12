@@ -1,4 +1,4 @@
-export type CSVFile = {
+export interface CSVFile {
   SiteSource?: string;
   ItemID?: string;
   ManufacturerID?: string;
@@ -25,4 +25,4 @@ export type CSVFile = {
   CategoryName?: string;
   IsRX?: string;
   IsTBD?: string;
-};
+}

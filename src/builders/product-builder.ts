@@ -1,7 +1,7 @@
 import { randomUUID } from 'crypto';
 import { nanoid } from 'nanoid';
-import { CSVFile } from 'src/types/csv-file';
-import { Data, Product } from 'src/types/product';
+import { CSVFile } from 'src/database/interfaces/csv.file';
+import { Data, Product } from 'src/database/interfaces/prd';
 
 export class ProductBuilder {
   private readonly result: Product;
@@ -24,6 +24,9 @@ export class ProductBuilder {
       info: null,
       namespace: null,
       status: null,
+      categoryName: null,
+      primaryCategory: null,
+      secondaryCategory: null,
     };
   }
 
@@ -142,8 +145,8 @@ export class ProductBuilder {
     return this;
   }
 
-  withDocId(docId: string) {
-    this.result.docId = docId || '';
+  withDocId() {
+    this.result.docId = nanoid();
     return this;
   }
 
@@ -159,6 +162,20 @@ export class ProductBuilder {
 
   withImmutable() {
     this.result.immutable = false;
+    return this;
+  }
+  withCategoryName(categoryName: string) {
+    this.result.categoryName = categoryName || null;
+    return this;
+  }
+
+  withPrimaryCategory(primaryCategory: string) {
+    this.result.primaryCategory = primaryCategory || null;
+    return this;
+  }
+
+  withSecondaryCategory(secondaryCategory: string) {
+    this.result.secondaryCategory = secondaryCategory || null;
     return this;
   }
 

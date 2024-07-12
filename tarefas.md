@@ -11,14 +11,17 @@ description: Glove Exam Nitrile PowderFree PF Polymer Blue Small 200bx 10 bxcs 6
 pkg: BX
 o produto principal é identificado pelo ProductID
 itemID = manufacturerItemId
+
 data to be saved:
 
+- productId
 - manufacturerItemCode
 - itemDescription
 - imageFileName
 - itemImageUrl
 - PKG
 - unitPrice
+- categories
 
 importar o csv;
 transformar cada uma das linhas em um objeto(usar builder)
