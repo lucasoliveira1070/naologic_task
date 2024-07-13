@@ -2,7 +2,7 @@
 
 ###
 
-<h4 align="left">Summary of the project: A cronjob that will run once a day, every day. Its purpose is to download a 40MB CSV file, parse the data, hydrate and save it to the database. Afterward, a prompt is executed on Google Gemini to enhance the description of items. (In this scenario, only 10 items at a time.)</h4>
+<h4 align="left">Summary of the project: A cronjob that will run once a day, every day. It's purpose is to download a 40MB CSV file, parse the data, hydrate and save it to the database. Afterward, a prompt is executed on Google Gemini to enhance the description of items. (In this scenario, only 10 items at a time.)</h4>
 
 ###
 
@@ -28,7 +28,7 @@
 
 ###
 
-<h4 align="left">Don't worry, I'm here to make your life easier.<br>I've prepared a docker-compose.yaml file that will run a container with MongoDB and an image of this application.<br>Just execute the command "docker compose up".<br>The task requirement is for the job to run once a day, but to see the application working faster, in the docker-compose.yaml file, set the environment variable "CRON_TIME" to the following value: '*/10 * * * * *'. This way, the application will run every 10 seconds.</h4>
+<h4 align="left">Don't worry, I'm here to make your life easier.<br>I've prepared a docker-compose.yaml file that will run a container with MongoDB and an image of this application and also the CSV file was built into the docker image.<br>Just execute the command "docker compose up".<br>The task requirement is for the job to run once a day, but to see the application working faster, in the docker-compose.yaml file, set the environment variable "CRON_TIME" to the following value: '*/10 * * * * *'. This way, the application will run every 10 seconds.</h4>
 
 ###
 
