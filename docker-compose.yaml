@@ -3,14 +3,27 @@ version: '3.8'
 services:
   mongodb:
     image: mongo:latest
-    container_name: mongo_container
     ports:
       - '27017:27017'
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
-    volumes:
-      - mongo-data:/data/db
 
-volumes:
-  mongo-data:
+  naologic_app:
+    image: loliveira306/naologic_task:1.3
+    restart: always
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_URI: mongodb://root:root@mongodb:27017/naologic?authSource=admin
+      DATABASE_NAME: naologic
+      OPENAI_KEY: sk-proj-dmPmmqn5xyKv3A0OwxDcT3BlbkFJ5iQhsZV1aLuAk7q8FUXw
+      GEMINI_API_KEY: AIzaSyAdD_lTHcjCZf7EF5cveyuc-EHn8m_ckds
+      CSV_FILE_PATH: ./images40.txt
+      CRON_TIME: '*/10 * * * * *'
+    depends_on:
+      - mongodb
+    deploy:
+      resources:
+        limits:
+          memory: 2G

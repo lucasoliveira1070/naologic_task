@@ -1,12 +1,12 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Cron, CronExpression } from '@nestjs/schedule';
+import { Cron } from '@nestjs/schedule';
 import { ProductBuilder } from '../../builders/product-builder';
 import { CsvService } from '../csv/csv.service';
 import { ProductRepository } from 'src/repositories/product-repository';
 import { Product } from 'src/database/interfaces/prd';
 import { CSVFile } from 'src/database/interfaces/csv.file';
 import generateEnhancedDescription from 'src/utils/generate-description';
-import { CSV_FILE_PATH } from 'src/config/enviroment.config';
+import { CRON_TIME, CSV_FILE_PATH } from 'src/config/enviroment.config';
 
 @Injectable()
 export class AppService {
@@ -16,7 +16,7 @@ export class AppService {
     private readonly productRepository: ProductRepository,
   ) {}
 
-  @Cron(CronExpression.EVERY_DAY_AT_4AM)
+  @Cron(CRON_TIME)
   async execute() {
     let countRows = 0;
     const productsToSave: Product[] = [];
