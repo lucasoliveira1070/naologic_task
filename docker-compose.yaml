@@ -10,7 +10,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
 
   naologic_app:
-    image: loliveira306/naologic_task:1.4
+    image: loliveira306/naologic_task:1.5
     restart: always
     ports:
       - '3000:3000'

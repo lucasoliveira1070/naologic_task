@@ -28,7 +28,7 @@
 
 ###
 
-<h4 align="left">Don't worry, I'm here to make your life easier.<br>I've prepared a docker-compose.yaml file that will run a container with MongoDB and an image of this application and also the CSV file was built into the docker image.<br>Just execute the command "docker compose up".<br>The task requirement is for the job to run once a day, but to see the application working faster, in the docker-compose.yaml file, set the environment variable "CRON_TIME" to the following value: '*/10 * * * * *'. This way, the application will run every 10 seconds.</h4>
+<h4 align="left">Don't worry, I'm here to make your life easier.<br>I've prepared a docker-compose.yaml file that will run a container with MongoDB and an image of this application and also the CSV file was built into the docker image.<br>Just execute the command "docker compose up".<br>The task requirement is for the job to run once a day, but to see the application working faster, in the docker-compose.yaml file, set the environment variable "CRON_TIME" to the following value: '*/20 * * * * *'. This way, the application will run every 20 seconds.</h4>
 
 ###
 
