@@ -9,9 +9,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 import {
   MongoProduct,
   MongoProductSchema,
-} from 'src/database/mongo-product-schema';
-import { ProductRepository } from 'src/repositories/product-repository';
-import { MongoProductRepository } from 'src/database/mongo-product-repository';
+} from '@src/database/mongo-product-schema';
+import { ProductRepository } from '@src/repositories/product-repository';
+import { MongoProductRepository } from '@src/database/mongo-product-repository';
 
 @Module({
   imports: [

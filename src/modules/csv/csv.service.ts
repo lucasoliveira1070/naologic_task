@@ -6,10 +6,16 @@ import { CSVFile } from 'src/database/interfaces/csv.file';
 @Injectable()
 export class CsvService {
   async *processCsv(filePath: string): AsyncGenerator<CSVFile> {
-    const stream = fs.createReadStream(filePath).pipe(csv({ separator: '\t' }));
+    try {
+      const stream = fs
+        .createReadStream(filePath)
+        .pipe(csv({ separator: '\t' }));
 
-    for await (const row of stream) {
-      yield row;
+      for await (const row of stream) {
+        yield row;
+      }
+    } catch (error) {
+      throw new Error('Could not read the csv file');
     }
   }
 }

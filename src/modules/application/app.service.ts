@@ -6,6 +6,7 @@ import { ProductRepository } from 'src/repositories/product-repository';
 import { Product } from 'src/database/interfaces/prd';
 import { CSVFile } from 'src/database/interfaces/csv.file';
 import generateEnhancedDescription from 'src/utils/generate-description';
+import { CSV_FILE_PATH } from 'src/config/enviroment.config';
 
 @Injectable()
 export class AppService {
@@ -25,7 +26,7 @@ export class AppService {
       let batch: CSVFile[] = [];
 
       const groupedByProductId: Record<string, CSVFile[]> = {};
-      const iterator = this.csvService.processCsv('./images40.txt');
+      const iterator = this.csvService.processCsv(CSV_FILE_PATH);
 
       for await (const item of iterator) {
         batch.push(item as CSVFile);
