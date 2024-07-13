@@ -1,4 +1,4 @@
-export interface CSVFile {
+export interface CSVRow {
   SiteSource?: string;
   ItemID?: string;
   ManufacturerID?: string;

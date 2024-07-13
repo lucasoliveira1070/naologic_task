@@ -22,4 +22,9 @@ export class MongoProductRepository extends ProductRepository {
   public async findRandom(): Promise<Product[]> {
     return await this.MongoProductModel.aggregate([{ $sample: { size: 10 } }]);
   }
+
+  public async deleteMany(): Promise<string> {
+    const result = await this.MongoProductModel.deleteMany({ isTBD: 'Y' });
+    return `${result.deletedCount} documents deleted`;
+  }
 }

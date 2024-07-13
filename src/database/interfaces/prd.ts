@@ -14,6 +14,7 @@ export interface Product {
   categoryName: string;
   primaryCategory: string;
   secondaryCategory: string;
+  isTBD: string;
 }
 
 export interface Data {

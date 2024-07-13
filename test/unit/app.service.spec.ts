@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { Logger } from '@nestjs/common';
 import { ProductRepository } from '../../src/repositories/product-repository';
 import { Product } from '../../src/database/interfaces/prd';
-import { CSVFile } from '../../src/database/interfaces/csv.file';
+import { CSVRow } from '../../src/database/interfaces/csv.file';
 import { CsvService } from '../../src/modules/csv/csv.service';
 import { AppService } from '../../src/modules/application/app.service';
 import { MockProductDocument } from '../../test/mocks/mock-product-document';
@@ -46,7 +46,7 @@ describe('AppService', () => {
 
   describe('execute', () => {
     it('should process and save products', async () => {
-      const mockCsvData: CSVFile[] = [
+      const mockCsvData: CSVRow[] = [
         {
           ProductID: '1',
           CategoryName: 'Category1',

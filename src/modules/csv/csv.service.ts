@@ -1,11 +1,11 @@
 import * as fs from 'fs';
 import { Injectable } from '@nestjs/common';
 import * as csv from 'csv-parser';
-import { CSVFile } from 'src/database/interfaces/csv.file';
+import { CSVRow } from 'src/database/interfaces/csv.file';
 
 @Injectable()
 export class CsvService {
-  async *processCsv(filePath: string): AsyncGenerator<CSVFile> {
+  async *processCsv(filePath: string): AsyncGenerator<CSVRow> {
     try {
       const stream = fs
         .createReadStream(filePath)

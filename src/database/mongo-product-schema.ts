@@ -36,6 +36,10 @@ export class MongoProduct implements Product {
   primaryCategory: string;
   @Prop({ required: false })
   secondaryCategory: string;
+  @Prop({ required: false })
+  isTBD: string;
 }
 
 export const MongoProductSchema = SchemaFactory.createForClass(MongoProduct);
+
+MongoProductSchema.index({ docId: 1 });

@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 import { nanoid } from 'nanoid';
-import { CSVFile } from 'src/database/interfaces/csv.file';
+import { CSVRow } from 'src/database/interfaces/csv.file';
 import { Data, Product } from 'src/database/interfaces/prd';
 
 export class ProductBuilder {
@@ -27,6 +27,7 @@ export class ProductBuilder {
       categoryName: null,
       primaryCategory: null,
       secondaryCategory: null,
+      isTBD: null,
     };
   }
 
@@ -40,7 +41,7 @@ export class ProductBuilder {
     return this;
   }
 
-  withData(data: CSVFile[]) {
+  withData(data: CSVRow[]) {
     const variants = data.map((item) => ({
       id: nanoid(),
       available: Number(item.QuantityOnHand) > 0,
@@ -204,6 +205,11 @@ export class ProductBuilder {
 
   withStatus() {
     this.result.status = 'active';
+    return this;
+  }
+
+  withTDB(isTBD: string) {
+    this.result.isTBD = isTBD || '';
     return this;
   }
 

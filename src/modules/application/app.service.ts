@@ -4,7 +4,7 @@ import { ProductBuilder } from '../../builders/product-builder';
 import { CsvService } from '../csv/csv.service';
 import { ProductRepository } from 'src/repositories/product-repository';
 import { Product } from 'src/database/interfaces/prd';
-import { CSVFile } from 'src/database/interfaces/csv.file';
+import { CSVRow } from 'src/database/interfaces/csv.file';
 import generateEnhancedDescription from 'src/utils/generate-description';
 import { CRON_TIME, CSV_FILE_PATH } from 'src/config/enviroment.config';
 
@@ -23,13 +23,13 @@ export class AppService {
 
     try {
       const batchSize = 1000;
-      let batch: CSVFile[] = [];
+      let batch: CSVRow[] = [];
 
-      const groupedByProductId: Record<string, CSVFile[]> = {};
+      const groupedByProductId: Record<string, CSVRow[]> = {};
       const iterator = this.csvService.processCsv(CSV_FILE_PATH);
 
       for await (const item of iterator) {
-        batch.push(item as CSVFile);
+        batch.push(item as CSVRow);
         if (batch.length >= batchSize) {
           this.processBatch(batch, groupedByProductId);
           batch = [];
@@ -41,7 +41,7 @@ export class AppService {
       }
 
       Object.keys(groupedByProductId).forEach((productId) => {
-        const items: CSVFile[] = groupedByProductId[productId];
+        const items: CSVRow[] = groupedByProductId[productId];
 
         const product = ProductBuilder.initialize()
           .withId()
@@ -59,6 +59,7 @@ export class AppService {
           .withCategoryName(items[0].CategoryName)
           .withPrimaryCategory(items[0].PrimaryCategoryName)
           .withSecondaryCategory(items[0].SecondaryCategoryName)
+          .withTDB(items[0].IsTBD)
           .build();
 
         productsToSave.push(product);
@@ -70,6 +71,8 @@ export class AppService {
         const batchToSave = productsToSave.slice(i, i + saveBatchSize);
         await this.productRepository.saveMany(batchToSave);
       }
+
+      await this.productRepository.deleteMany();
 
       const randomProducts = await this.productRepository.findRandom();
       randomProducts.forEach(async (product) => {
@@ -93,8 +96,8 @@ export class AppService {
   }
 
   private processBatch(
-    batch: CSVFile[],
-    groupedByProductId: Record<string, CSVFile[]>,
+    batch: CSVRow[],
+    groupedByProductId: Record<string, CSVRow[]>,
   ) {
     batch.forEach((item) => {
       if (!groupedByProductId[item.ProductID]) {
