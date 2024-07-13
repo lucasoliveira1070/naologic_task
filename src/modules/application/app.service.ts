@@ -72,7 +72,6 @@ export class AppService {
       }
 
       const randomProducts = await this.productRepository.findRandom();
-
       randomProducts.forEach(async (product) => {
         const response = await generateEnhancedDescription(
           product.data.name,

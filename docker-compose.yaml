@@ -17,10 +17,9 @@ services:
     environment:
       DATABASE_URI: mongodb://root:root@mongodb:27017/naologic?authSource=admin
       DATABASE_NAME: naologic
-      OPENAI_KEY: sk-proj-dmPmmqn5xyKv3A0OwxDcT3BlbkFJ5iQhsZV1aLuAk7q8FUXw
-      GEMINI_API_KEY: AIzaSyAdD_lTHcjCZf7EF5cveyuc-EHn8m_ckds
+      GEMINI_API_KEY:
       CSV_FILE_PATH: ./images40.txt
-      CRON_TIME: '*/10 * * * * *'
+      CRON_TIME: '0 04 * * *'
     depends_on:
       - mongodb
     deploy:

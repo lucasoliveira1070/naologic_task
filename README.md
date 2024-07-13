@@ -1,73 +1,67 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+<h1 align="left">Naologic Interview - Backend Software Engineer - Lucas Oliveira</h1>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+###
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<h4 align="left">Summary of the project: A cronjob that will run once a day, every day. Its purpose is to download a 40MB CSV file, parse the data, hydrate and save it to the database. Afterward, a prompt is executed on Google Gemini to enhance the description of items. (In this scenario, only 10 items at a time.)</h4>
 
-## Description
+###
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<h3 align="left">Folder structure</h3>
 
-## Installation
+###
 
-```bash
-$ npm install
-```
+<h4 align="left">I opted for a lean and more objective project.</h4>
 
-## Running the app
+###
 
-```bash
-# development
-$ npm run start
+<div align="left">
+  <img height="400" src="https://storage.googleapis.com/bucket-lucas-oliveira-se-portfolio/folder_structure.png"  />
+</div>
 
-# watch mode
-$ npm run start:dev
+###
 
-# production mode
-$ npm run start:prod
-```
+<h3 align="left">How to run</h3>
 
-## Test
+###
 
-```bash
-# unit tests
-$ npm run test
+<h4 align="left">If you run the project through an IDE, you must add the .env file to the project root with the following values:<br>DATABASE_URI=''<br>DATABASE_NAME=''<br>GEMINI_API_KEY=''<br>CSV_FILE_PATH=''<br>CRON_TIME=''</h4>
 
-# e2e tests
-$ npm run test:e2e
+###
 
-# test coverage
-$ npm run test:cov
-```
+<h4 align="left">Don't worry, I'm here to make your life easier.<br>I've prepared a docker-compose.yaml file that will run a container with MongoDB and an image of this application.<br>Just execute the command "docker compose up".<br>The task requirement is for the job to run once a day, but to see the application working faster, in the docker-compose.yaml file, set the environment variable "CRON_TIME" to the following value: '*/10 * * * * *'. This way, the application will run every 10 seconds.</h4>
 
-## Support
+###
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+<h2 align="left">Highlights</h2>
 
-## Stay in touch
+###
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+<h4 align="left">Due to being a large file and the 2GB memory limit, I processed the CSV file using async generators. The use of async generators allows processing the CSV file asynchronously and on demand. This means that each line of the file is read and processed as needed, without the need to store all lines in memory at the same time.</h4>
 
-## License
+###
 
-Nest is [MIT licensed](LICENSE).
+<div align="left">
+  <img height="400" src="https://storage.googleapis.com/bucket-lucas-oliveira-se-portfolio/async_generators.png"  />
+</div>
+
+###
+
+<h4 align="left">As the object to be saved in the database was quite complex, I used the Builder creational design pattern, which greatly facilitates the creation of objects with many attributes, some of which may or may not be required.</h4>
+
+###
+
+<div align="left">
+  <img height="400" src="https://storage.googleapis.com/bucket-lucas-oliveira-se-portfolio/product_builder.png"  />
+</div>
+
+###
+
+<p align="left">Following Clean Architecture best practices, I used abstract repositories to decouple the project structure. If the database mechanism changes in the future, no changes will be required in the business rules, only in the outer layer.</p>
+
+###
+
+<div align="left">
+  <img height="180" src="https://storage.googleapis.com/bucket-lucas-oliveira-se-portfolio/abstract_repository.png"  />
+</div>
+
+###
