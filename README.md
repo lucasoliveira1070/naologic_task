@@ -24,7 +24,7 @@
 
 ###
 
-<h4 align="left">If you run the project through an IDE, you must add the .env file to the project root with the following values:<br>DATABASE_URI=''<br>DATABASE_NAME=''<br>GEMINI_API_KEY=''<br>CSV_FILE_PATH=''<br>CRON_TIME=''</h4>
+<h4 align="left">If you run the project through an IDE, you'll need a MongoDB running and you must add the .env file to the project root with the following values:<br>DATABASE_URI: mongodb://root:root@mongodb:27017/naologic?authSource=admin<br>      DATABASE_NAME: naologic<br>      GEMINI_API_KEY:<br>      CSV_FILE_PATH: ./images40.txt<br>      CRON_TIME: '0 04 * * *'</h4>
 
 ###
 
@@ -56,12 +56,16 @@
 
 ###
 
-<p align="left">Following Clean Architecture best practices, I used abstract repositories to decouple the project structure. If the database mechanism changes in the future, no changes will be required in the business rules, only in the outer layer.</p>
+<h4 align="left">Following Clean Architecture best practices, I used abstract repositories to decouple the project structure. If the database mechanism changes in the future, no changes will be required in the business rules, only in the outer layer.</h4>
 
 ###
 
 <div align="left">
   <img height="180" src="https://storage.googleapis.com/bucket-lucas-oliveira-se-portfolio/abstract_repository.png"  />
 </div>
+
+###
+
+<h4 align="left">P.S: Instead of using chatgpt4, I chose to use Google Gemini, the implementation is practically the same, just changing the provider.<br>I made this decision for financial reasons, as I had reached the quota limit established by OpenAi. I hope you understand.</h4>
 
 ###
