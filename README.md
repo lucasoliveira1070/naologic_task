@@ -24,7 +24,7 @@
 
 ###
 
-<h4 align="left">If you run the project through an IDE, you'll need a MongoDB running and you must add the .env file to the project root with the following values:<br>DATABASE_URI: mongodb://root:root@mongodb:27017/naologic?authSource=admin<br>      DATABASE_NAME: naologic<br>      GEMINI_API_KEY:<br>      CSV_FILE_PATH: ./images40.txt<br>      CRON_TIME: '0 04 * * *'</h4>
+<h4 align="left">First you need to generate the api key through this link: https://aistudio.google.com/app/apikey<br>If you run the project through an IDE, you'll need a MongoDB running and you must add the .env file to the project root with the following values:<br>DATABASE_URI: mongodb://root:root@mongodb:27017/naologic?authSource=admin<br>      DATABASE_NAME: naologic<br>      GEMINI_API_KEY:<br>      CSV_FILE_PATH: ./images40.txt<br>      CRON_TIME: '0 04 * * *'</h4>
 
 ###
 
